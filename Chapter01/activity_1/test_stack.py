@@ -4,8 +4,8 @@ These tests will check if the following conditions
 are met:
 
     * Python is 3.0 or higher.
-    * TensorFlow is 1.4 or higher.
-    * Keras is 2.0 or higher.
+    * TensorFlow is 2.0 or higher.
+    * Keras is 2.2 or higher.
 
 The program returns helpful error messages if
 the conditions above are not met.abs
@@ -67,18 +67,18 @@ def test_tensorflow():
     """
     message = None
     try:
-        import tensorflow
+        import tensorflow;
 
-        if tensorflow.__version__ >= '1.4.0':
+        if tensorflow.__version__ >= '2.0.0':
             success = True
             log = """
-        PASS: TensorFlow 1.4.0 (or higher) is installed.
+        PASS: TensorFlow 2.0.0 (or higher) is installed.
             """
 
         else:
             success = False
             log = """
-        FAIL: TensorFlow 1.4.0 (or higher) not detected.
+        FAIL: TensorFlow 2.0.0 (or higher) not detected.
             """
             message = """
             Please install it before proceeding. 
@@ -91,7 +91,7 @@ def test_tensorflow():
     except ModuleNotFoundError:
         success = False
         log = """
-        FAIL: TensorFlow 1.4.0 (or higher) not detected.
+        FAIL: TensorFlow 2.0.0 (or higher) not detected.
         """
         message = """
         Please install it before proceeding. 
@@ -119,13 +119,13 @@ def test_keras():
         if sys.version_info[0] == 3:
             success = True
             log = """
-        PASS: Keras 2.0 (or higher) is installed.
+        PASS: Keras 2.2 (or higher) is installed.
             """
 
         else:
             success = False
             log = """
-        FAIL: Keras 2.0 (or higher) not detected.
+        FAIL: Keras 2.2 (or higher) not detected.
             """
             message = """
             Please install it before proceeding. 
@@ -138,7 +138,7 @@ def test_keras():
     except ModuleNotFoundError:
         success = False
         log = """
-        FAIL: Keras 2.0 (or higher) not detected.
+        FAIL: Keras 2.2 (or higher) not detected.
         """
         message = """
         Please install it before proceeding. 
