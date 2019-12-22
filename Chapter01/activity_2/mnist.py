@@ -8,7 +8,7 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Convolution2D, Flatten, Dense, Dropout
-
+import datetime
 
 # In[17]:
 
@@ -20,6 +20,9 @@ X_train, X_test = X_train / 255.0, X_test / 255.0
 
 
 # In[20]:
+
+log_dir="logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
 
 
 X_train = X_train.reshape(X_train.shape[0],X_train.shape[1], X_train.shape[2],1)
@@ -48,7 +51,7 @@ model.compile(optimizer='adam',
 # In[23]:
 
 
-model.fit(X_train, y_train, epochs=5)
+model.fit(X_train, y_train, epochs=5, validation_data=(X_test, y_test),callbacks=[tensorboard_callback])
 
 
 # In[ ]:
