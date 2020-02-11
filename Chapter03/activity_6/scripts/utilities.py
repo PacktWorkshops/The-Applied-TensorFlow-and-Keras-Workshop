@@ -7,7 +7,7 @@ Date: 2017-12-18
 import numpy as np
 
 
-def create_groups(data, group_size=7):
+def create_groups(data, group_size=15):
     """
     Creates distinct groups from a given continuous series.
 

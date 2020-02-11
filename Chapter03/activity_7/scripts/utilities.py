@@ -8,7 +8,7 @@ import random
 import numpy as np
 
 from matplotlib import pyplot as plt
-from keras.callbacks import TensorBoard
+from tensorflow.keras.callbacks import TensorBoard
 
 
 def create_groups(data, group_size=7):
@@ -108,13 +108,14 @@ def train_model(model, X, Y, epochs=100, version=0, run_number=0):
     model_name = 'bitcoin_lstm_v{version}_run_{run_number}_{hex_code}'.format(
         version=version, run_number=run_number, hex_code=hex_code[:6])
 
-    tensorboard = TensorBoard(log_dir='./logs/{}'.format(model_name))
-    
+
+    tensorboard = TensorBoard(log_dir='logs\\{}'.format(model_name))
     model_history = model.fit(
         x=X, y=Y,
         batch_size=1, epochs=epochs,
-        verbose=0, callbacks=[tensorboard],
-        shuffle=False)
+        verbose=0, 
+        shuffle=False,
+	callbacks=[tensorboard])
     
     return model_history
 
@@ -179,9 +180,10 @@ def denormalize(reference, series,
     A modified DataFrame with the new variable provided
     in `denormalized_variable` parameter.
     """
-    week_values = reference[
-        reference['iso_week'] == series['iso_week'].values[0]]
-    last_value = week_values[denormalized_variable].values[0]
-    series[denormalized_variable] = last_value * (series[normalized_variable] + 1)
+    if('iso_week' in list(series.columns)):
+    
+        week_values = reference[reference['iso_week'] == series['iso_week'].values[0]]
+        last_value = week_values[denormalized_variable].values[0]
+        series[denormalized_variable] = last_value * (series[normalized_variable] + 1)
 
     return series
