@@ -29,7 +29,7 @@ pytz==2017.3
 PyYAML==3.12
 redis==2.10.6
 rednose==1.2.3
-requests==2.18.4
+requests==2.20.0
 scipy==1.0.0
 six==1.11.0
 tensorflow==2.0
