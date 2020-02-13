@@ -3,14 +3,14 @@ Creates a deep learning model abstraction.
 """
 from datetime import datetime, timedelta
 
-from tensorflow.keras.models import load_model
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM
-from tensorflow.keras.layers import Dense, Activation
+from keras.models import load_model
+from keras.models import Sequential
+from keras.layers.recurrent import LSTM
+from keras.layers.core import Dense, Activation
 
 from cryptonic.models.helper import ModelHelper
 from cryptonic.models.normalizations import point_relative_normalization
-import pandas as pd
+
 
 class Model(ModelHelper):
     """
@@ -188,10 +188,7 @@ class Model(ModelHelper):
                                                        last_value=self.last_value)
         
         dates = []
-        #print(self.last_date)
-        x = pd.to_datetime(self.last_date)
-        date = str(x.date())
-        base_date = datetime.strptime(date, '%Y-%m-%d')
+        base_date = datetime.strptime(self.last_date, '%Y-%m-%d')
         for i in range(1, len(predictions[0] + 1)):
             d = (base_date + timedelta(days=i)).strftime('%Y-%m-%d')
             dates.append(d)

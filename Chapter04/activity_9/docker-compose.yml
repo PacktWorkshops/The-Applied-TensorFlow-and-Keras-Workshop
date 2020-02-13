@@ -35,8 +35,8 @@ services:
         ports:
             - "5000:5000"
         environment:
-            - BITCOIN_START_DATE=2017-01-01
-            - EPOCHS=300
+            - BITCOIN_START_DATE=2019-01-01
+            - EPOCHS=50
             - PERIOD_SIZE=7
         volumes:
             - ./cryptonic_logs:/logs

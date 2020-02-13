@@ -53,10 +53,6 @@ class Server:
         """
         ticker =  yf.Ticker("BTC-USD")
         historic_data = ticker.history(period='max')
-        historic_data = historic_data.rename(columns={'Open':'open', 'High':'high', 'Low':'low', 'Close':'close', 'Volume':'volume'})
-        historic_data.index.names = ['date']
-        historic_data = historic_data[['open','high', 'low', 'close', 'volume']]
-        historic_data = historic_data.reset_index()
         
         model_path = os.getenv('MODEL_NAME')
 
@@ -74,7 +70,7 @@ class Server:
 
         if not model_path:
             self.model.build()
-            self.model.train(epochs=int(os.getenv('EPOCHS', 50)), verbose=1)
+            self.model.train(epochs=int(os.getenv('EPOCHS', 300)), verbose=1)
 
         return self.model
 
@@ -100,7 +96,7 @@ class Server:
         cache_configuration = {
             'CACHE_TYPE': 'redis',
             'CACHE_REDIS_URL': os.getenv('REDIS_URL',
-                                         "redis://localhost:6379/2")
+                                         'redis://redis@cache:6379/0')
         }
 
         self.cache = Cache(app, config=cache_configuration)
