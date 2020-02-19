@@ -33,7 +33,7 @@ requests
 scipy==1.0.0
 six==1.11.0
 tensorboard==2.0.1
-tensorflow==2.0.0
+tensorflow==2.0.1
 tensorflow-estimator==2.0.1
 termstyle==0.1.11
 urllib3==1.22
