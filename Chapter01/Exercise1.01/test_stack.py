@@ -10,7 +10,7 @@ are met:
 The program returns helpful error messages if
 the conditions above are not met.abs
 
-Proceed to Lesson 2 when all tests pass.
+Proceed to Chapter 02 when all tests pass.
 
 --
 Author: Luis Capelo
@@ -167,7 +167,7 @@ if __name__ == '__main__':
         print(
             """
         ** Please review software requirements before
-        ** proceeding to Chapter02.
+        ** proceeding to Chapter 02.
             """
         )
     else:
