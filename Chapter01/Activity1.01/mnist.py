@@ -40,10 +40,12 @@ model.add(Dropout(0.2))
 model.add(Dense(10, activation = 'softmax'))
 
 
+
+
 # In[22]:
 
 
-model.compile(optimizer='adam',
+model.compile(optimizer='Adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
