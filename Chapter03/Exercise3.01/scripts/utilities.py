@@ -1,5 +1,5 @@
 """
-Utility functions used in Activity 6.
+Utility functions used in Exercise 3.01.
 
 Author: Luis Capelo
 Date: 2017-12-18
