@@ -10,6 +10,9 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Convolution2D, Flatten, Dense, Dropout
 import datetime
 
+from keras.optimizers import adam
+
+
 # In[17]:
 
 
@@ -44,8 +47,10 @@ model.add(Dense(10, activation = 'softmax'))
 
 # In[22]:
 
+learning_rate=0.001
 
-model.compile(optimizer='Adam',
+
+model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate = learning_rate),
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
@@ -53,7 +58,7 @@ model.compile(optimizer='Adam',
 # In[23]:
 
 
-model.fit(X_train, y_train, epochs=5, validation_data=(X_test, y_test),callbacks=[tensorboard_callback])
+model.fit(X_train, y_train, epochs=10, validation_data=(X_test, y_test),callbacks=[tensorboard_callback])
 
 
 # In[ ]:
