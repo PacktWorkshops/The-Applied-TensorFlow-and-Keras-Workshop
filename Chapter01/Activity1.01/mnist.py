@@ -58,7 +58,7 @@ model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate = learning_rate),
 # In[23]:
 
 
-model.fit(X_train, y_train, epochs=10, validation_data=(X_test, y_test),callbacks=[tensorboard_callback])
+model.fit(X_train, y_train, epochs=5, validation_data=(X_test, y_test),callbacks=[tensorboard_callback])
 
 
 # In[ ]:
