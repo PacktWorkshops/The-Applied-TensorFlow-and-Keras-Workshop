@@ -1,3 +1,0 @@
-"""
-Cryptocurrency prediction models.
-"""
